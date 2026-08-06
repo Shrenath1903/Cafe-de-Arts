@@ -170,7 +170,7 @@ const ITEMS = [
     chefTip:"A café classic reimagined as breakfast — best enjoyed slowly, with coffee in hand.", rating:4.8 }),
 
   // ---------------- HEALTHY BOWLS ----------------
-  D({id:"h1",cat:"bowls",name:"Granola Bowl",price:"₹360",img:"./img/granola_bowl.jpg",
+  D({id:"h1",cat:"bowls",name:"Granola Bowl",price:"₹360",img:"./img/gr.jpeg",
     desc:"House-made granola, seasonal fresh fruit, fruit compote, yogurt and honey, layered for crunch in every bite.",
     taste:["Crunchy","Fresh","Lightly Sweet"],
     health:["High Fiber","Probiotic Rich","Energy Boosting","Low Sugar"],
@@ -179,7 +179,7 @@ const ITEMS = [
     ingredients:["House Granola","Seasonal Fruit","Yogurt","Honey"],
     freshness:"Granola roasted in-house every week.",
     chefTip:"Let it sit two minutes before eating — the granola softens just enough.", rating:4.6 }),
-  D({id:"h2",cat:"bowls",name:"Blueberry Bowl",price:"₹390",img:"./img/blueberry_bowl.jpg",
+  D({id:"h2",cat:"bowls",name:"Blueberry Bowl",price:"₹390",img:"./img/blueberry_bowl.jpeg",
     desc:"A banana and blueberry smoothie base topped with house granola and toasted nuts, for a bright fruit-forward bowl.",
     taste:["Fruity","Fresh","Nutty"],
     health:["Antioxidant Rich","High Fiber","Vitamin C"],
@@ -188,7 +188,7 @@ const ITEMS = [
     ingredients:["Banana","Blueberry","Pineapple","House Granola","Toasted Nuts"],
     freshness:"Blended fresh to order.",
     chefTip:"Best enjoyed right away, while the smoothie base is still cold and thick.", rating:4.7 }),
-  D({id:"h3",cat:"bowls",name:"Dragon Bowl",price:"₹390",img:"./img/dragon_bowl.jpg",
+  D({id:"h3",cat:"bowls",name:"Dragon Bowl",price:"₹390",img:"./img/dragon_bowl.jpeg",
     desc:"Red dragon fruit, banana and pineapple smoothie topped with seasonal fruit and toasted nuts.",
     taste:["Fruity","Refreshing","Tropical"],
     health:["Vitamin C","High Fiber","Hydrating"],
@@ -548,7 +548,7 @@ const ITEMS = [
     ingredients:["Espresso","Chocolate","Milk"],
     freshness:"Blended fresh to order.",
     chefTip:"Ask for it extra dark if you want the chocolate to stand slightly more proudly.", rating:4.7 }),
-  D({id:"coffee_9",cat:"coffee",name:"Cold Coffee",price:"₹280",img:"./img/cold_coffee.jpg",
+  D({id:"coffee_9",cat:"coffee",name:"Cold Coffee",price:"₹280",img:"./img/cold_coffee.jpeg",
     desc:"Chilled coffee blended with milk for a creamy, refreshing iced cup.",
     taste:["Creamy","Cold","Smooth"],
     health:["Refreshing","Energy Lift"],
@@ -1225,9 +1225,15 @@ const hero = document.querySelector(".hero");
 function onScroll(){
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  scrollProgress.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + "%";
-  siteNav.classList.toggle("scrolled", scrollTop > 10);
-  floatingReserve.classList.toggle("show", scrollTop > (hero ? hero.offsetHeight * 0.7 : 400));
+  if (scrollProgress) {
+    scrollProgress.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + "%";
+  }
+  if (siteNav) {
+    siteNav.classList.toggle("scrolled", scrollTop > 10);
+  }
+  if (floatingReserve) {
+    floatingReserve.classList.toggle("show", scrollTop > (hero ? hero.offsetHeight * 0.7 : 400));
+  }
 }
 window.addEventListener("scroll", onScroll, { passive:true });
 
