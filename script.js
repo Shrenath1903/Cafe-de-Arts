@@ -954,7 +954,12 @@ const cartCountBadge = document.getElementById("cartCountBadge");
 const clearCartBtn = document.getElementById("clearCartBtn");
 
 function parsePrice(rawPrice){
-  return Number(String(rawPrice).replace(/[^0-9.]/g, "")) || 0;
+  const firstPrice = String(rawPrice).match(/[0-9]+(?:\.[0-9]+)?/);
+  return firstPrice ? Number(firstPrice[0]) : 0;
+}
+
+function getPriceOptions(rawPrice){
+  return String(rawPrice).match(/[0-9]+(?:\.[0-9]+)?/g)?.map(Number) || [];
 }
 
 function formatCurrency(value){
@@ -966,7 +971,7 @@ function addItemToCart(item){
   if(existing){
     existing.qty += 1;
   } else {
-    cart.push({ ...item, qty: 1 });
+    cart.push({ ...item, qty: 1, selectedPrice: parsePrice(item.price) });
   }
   renderCart();
 }
@@ -995,16 +1000,26 @@ function renderCart(){
       </div>`;
   } else {
     cartItems.innerHTML = cart.map(item => `
+      ${(() => {
+        const priceOptions = getPriceOptions(item.price);
+        const selectedPrice = item.selectedPrice || priceOptions[0];
+        const priceControl = priceOptions.length > 1
+          ? `<select class="cart-price-select" data-cart-price data-id="${item.id}" aria-label="Select price for ${item.name}">
+              ${priceOptions.map(price => `<option value="${price}" ${price === selectedPrice ? "selected" : ""}>${formatCurrency(price)}</option>`).join("")}
+            </select>`
+          : `<p>${item.price}</p>`;
+
+        return `
       <div class="cart-item">
         <div class="cart-item-main">
           <div class="cart-item-details">
             <img class="cart-item-image" src="${item.img}" alt="${item.name}">
             <div>
               <h4>${item.name}</h4>
-              <p>${item.price}</p>
+              ${priceControl}
             </div>
           </div>
-          <strong>${formatCurrency(parsePrice(item.price) * item.qty)}</strong>
+          <strong>${formatCurrency(selectedPrice * item.qty)}</strong>
         </div>
         <div class="cart-item-actions">
           <button type="button" data-cart-action="minus" data-id="${item.id}" aria-label="Decrease quantity">−</button>
@@ -1013,7 +1028,8 @@ function renderCart(){
           <button type="button" class="cart-remove" data-cart-action="remove" data-id="${item.id}" aria-label="Remove item">Remove</button>
         </div>
       </div>
-    `).join("");
+    `;
+      })()}`).join("");
   }
 
 }
@@ -1045,6 +1061,17 @@ cartItems.addEventListener("click", e=>{
   if(cartAction === "plus") updateCartItem(id, 1);
   if(cartAction === "minus") updateCartItem(id, -1);
   if(cartAction === "remove") updateCartItem(id, -9999);
+});
+
+cartItems.addEventListener("change", e=>{
+  const priceSelect = e.target.closest("[data-cart-price]");
+  if(!priceSelect) return;
+
+  const item = cart.find(entry => entry.id === priceSelect.dataset.id);
+  if(item){
+    item.selectedPrice = Number(priceSelect.value);
+    renderCart();
+  }
 });
 
 clearCartBtn.addEventListener("click", ()=>{
