@@ -140,6 +140,35 @@
   </div>
 </div>
 
+<!-- CART PANEL -->
+<button class="cart-pill" id="cartToggleBtn" aria-label="Open bill summary">
+  <span class="cart-pill-icon">🧾</span>
+  <span>Cart</span>
+  <span class="cart-pill-badge" id="cartCountBadge">0</span>
+</button>
+
+<div class="cart-panel" id="cartPanel" aria-hidden="true">
+  <div class="cart-panel-backdrop" id="cartPanelBackdrop"></div>
+  <aside class="cart-panel-content" role="dialog" aria-modal="true">
+    <div class="cart-header">
+      <div>
+        <p class="cart-kicker">Your Order</p>
+        <h3>Food Items</h3>
+      </div>
+      <button class="cart-close" id="cartCloseBtn" aria-label="Close cart">✕</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <!-- <div class="cart-note">Payment is disabled on this menu. This is only a bill preview.</div> -->
+
+    <div class="cart-actions">
+      <button class="btn btn-ghost" id="clearCartBtn" type="button">Clear Bill</button>
+      <!-- <button class="btn btn-primary cart-pay-disabled" type="button" disabled>Pay at Counter</button> -->
+    </div>
+  </aside>
+</div>
+
 <!-- DISH MODAL -->
 <div class="dish-modal" id="dishModal" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="dish-modal-backdrop" id="dishModalBackdrop"></div>

@@ -890,8 +890,11 @@ function cardHTML(item){
           <span class="dish-meta-item">⏱ ${item.prep}</span>
           ${spiceDots(item.spice)}
         </div>
-        <span class="view-more">View Details →</span>
+        <div class="dish-cta">
+          <button class="dish-add-btn" data-id="${item.id}" type="button">Add</button>
+        </div>
       </div>
+      <span class="view-more">View Details →</span>
     </div>
   </article>`;
 }
@@ -941,6 +944,113 @@ function buildMenu(){
   categorySheetList.innerHTML = `<button class="active" data-cat="all">All Categories</button>` +
     CATEGORIES.map(c=>`<button data-cat="${c.id}">${c.title}</button>`).join("");
 }
+
+const cart = [];
+const cartToggleBtn = document.getElementById("cartToggleBtn");
+const cartPanel = document.getElementById("cartPanel");
+const cartPanelBackdrop = document.getElementById("cartPanelBackdrop");
+const cartItems = document.getElementById("cartItems");
+const cartCountBadge = document.getElementById("cartCountBadge");
+const clearCartBtn = document.getElementById("clearCartBtn");
+
+function parsePrice(rawPrice){
+  return Number(String(rawPrice).replace(/[^0-9.]/g, "")) || 0;
+}
+
+function formatCurrency(value){
+  return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(value);
+}
+
+function addItemToCart(item){
+  const existing = cart.find(entry => entry.id === item.id);
+  if(existing){
+    existing.qty += 1;
+  } else {
+    cart.push({ ...item, qty: 1 });
+  }
+  renderCart();
+}
+
+function updateCartItem(itemId, delta){
+  const target = cart.find(entry => entry.id === itemId);
+  if(!target) return;
+
+  target.qty += delta;
+  if(target.qty <= 0){
+    const index = cart.findIndex(entry => entry.id === itemId);
+    if(index >= 0) cart.splice(index, 1);
+  }
+  renderCart();
+}
+
+function renderCart(){
+  const totalItems = cart.reduce((sum, item)=>sum + item.qty, 0);
+  cartCountBadge.textContent = String(totalItems);
+
+  if(!cart.length){
+    cartItems.innerHTML = `
+      <div class="empty-cart">
+        <p>Your bill is empty.</p>
+        <span>Add a dish to preview the total.</span>
+      </div>`;
+  } else {
+    cartItems.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div class="cart-item-main">
+          <div class="cart-item-details">
+            <img class="cart-item-image" src="${item.img}" alt="${item.name}">
+            <div>
+              <h4>${item.name}</h4>
+              <p>${item.price}</p>
+            </div>
+          </div>
+          <strong>${formatCurrency(parsePrice(item.price) * item.qty)}</strong>
+        </div>
+        <div class="cart-item-actions">
+          <button type="button" data-cart-action="minus" data-id="${item.id}" aria-label="Decrease quantity">−</button>
+          <span>${item.qty}</span>
+          <button type="button" data-cart-action="plus" data-id="${item.id}" aria-label="Increase quantity">+</button>
+          <button type="button" class="cart-remove" data-cart-action="remove" data-id="${item.id}" aria-label="Remove item">Remove</button>
+        </div>
+      </div>
+    `).join("");
+  }
+
+}
+
+function openCart(){
+  cartPanel.classList.add("open");
+  cartPanel.setAttribute("aria-hidden", "false");
+}
+
+function closeCart(){
+  cartPanel.classList.remove("open");
+  cartPanel.setAttribute("aria-hidden", "true");
+}
+
+cartToggleBtn.addEventListener("click", ()=>{
+  cartPanel.classList.contains("open") ? closeCart() : openCart();
+});
+cartPanelBackdrop.addEventListener("click", closeCart);
+document.getElementById("cartCloseBtn").addEventListener("click", closeCart);
+document.addEventListener("keydown", e=>{
+  if(e.key === "Escape" && cartPanel.classList.contains("open")) closeCart();
+});
+
+cartItems.addEventListener("click", e=>{
+  const action = e.target.closest("[data-cart-action]");
+  if(!action) return;
+  const { id, cartAction } = action.dataset;
+
+  if(cartAction === "plus") updateCartItem(id, 1);
+  if(cartAction === "minus") updateCartItem(id, -1);
+  if(cartAction === "remove") updateCartItem(id, -9999);
+});
+
+clearCartBtn.addEventListener("click", ()=>{
+  cart.length = 0;
+  renderCart();
+});
 
 function applyFilters(){
   const cards = document.querySelectorAll(".dish-card");
@@ -1048,6 +1158,11 @@ function modalHTML(item){
       <span class="chef-tip-glyph">❝</span>
       <p>${item.chefTip}</p>
     </div>
+
+    <div class="modal-action-row">
+      <button class="btn btn-primary add-to-cart-btn" data-item-id="${item.id}" type="button">Add to Bill</button>
+      <button class="btn btn-ghost" id="keepBrowsingBtn" type="button">Keep Browsing</button>
+    </div>
   </div>`;
 }
 
@@ -1065,6 +1180,20 @@ function openModal(item){
     });
   });
   document.getElementById("modalCloseBtn").addEventListener("click", closeModal);
+  const keepBrowsingBtn = document.getElementById("keepBrowsingBtn");
+  if(keepBrowsingBtn) keepBrowsingBtn.addEventListener("click", closeModal);
+
+  const addToCartBtn = document.querySelector(".add-to-cart-btn");
+  if(addToCartBtn){
+    addToCartBtn.addEventListener("click", ()=>{
+      const item = ITEMS.find(entry => entry.id === addToCartBtn.dataset.itemId);
+      if(item){
+        addItemToCart(item);
+        closeModal();
+        openCart();
+      }
+    });
+  }
 }
 function closeModal(){
   dishModal.classList.remove("open");
@@ -1105,6 +1234,18 @@ imageModalBackdrop.addEventListener("click", closeImageModal);
 document.addEventListener("keydown", e=>{ if(e.key === "Escape" && imageModal.classList.contains("open")) closeImageModal(); });
 
 menuRoot.addEventListener("click", e=>{
+  const addBtn = e.target.closest(".dish-add-btn");
+  if(addBtn){
+    e.preventDefault();
+    e.stopPropagation();
+    const item = ITEMS.find(i=>i.id===addBtn.dataset.id);
+    if(item){
+      addItemToCart(item);
+      openCart();
+    }
+    return;
+  }
+
   const imageLink = e.target.closest(".dish-image-link");
   if(imageLink){
     const card = imageLink.closest(".dish-card");
