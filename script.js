@@ -27,6 +27,7 @@ const CATEGORIES = [
   { id:"coffee",        part:"drinks", title:"Coffee",         kicker:"Let's Get Coffee", note:"Espresso, milk, and café classics." },
   { id:"tea",           part:"drinks", title:"Tea Selection",  kicker:"Tea Selection", note:"Handpicked teas and house favourites." },
   { id:"juice",         part:"drinks", title:"Juice & Smoothies", kicker:"Carte des Boissons", note:"Freshly squeezed and blended to order." },
+  { id:"mocktails",     part:"drinks", title:"Mocktails",      kicker:"Carte des Boissons", note:"Handcrafted botanical refreshers and sparkling coolers." },
   { id:"hotdrinks",     part:"drinks", title:"Most Popular", kicker:"Carte des Boissons", note:"The crowd-favourite pour-over comfort." },
   { id:"soda",          part:"drinks", title:"Soda", kicker:"Carte des Boissons", note:"Bubbly, tangy, and chilled." },
   { id:"milkshake",     part:"drinks", title:"Milkshake", kicker:"Carte des Boissons", note:"Creamy, cold, and indulgent." },
@@ -63,7 +64,7 @@ const ITEMS = [
     ingredients:["Flour","Butter","Dark Chocolate Batons"],
     freshness:"Baked fresh each morning.",
     chefTip:"Best within the first hour of baking, while the chocolate is still soft.", rating:4.8 }),
-  D({id:"v3",cat:"viennoiseries",name:"Seasonal Morning Muffin",price:"₹220",img:"./img/muffin.jpg",
+  D({id:"v3",cat:"viennoiseries",name:"Muffin / Chocolate and Blueberry",price:"₹220",img:"./img/muffin.jpg",
     desc:"A different muffin every day — ask your server what's rising in the oven this morning.",
     taste:["Sweet","Moist","Comforting"],
     health:["Seasonal Fruit","Baked Fresh Daily"],
@@ -74,7 +75,7 @@ const ITEMS = [
     chefTip:"Ask which fruit is folding through today's batch before you order.", rating:4.5 }),
 
   // ---------------- EGGS TO ORDER ----------------
-  D({id:"e1",cat:"eggs",name:"Eggs à la Truffe",price:"₹490",img:"./img/eggs_à_la_truffe.jpg",
+  D({id:"e1",cat:"eggs",name:"Eggs à la Truffe",price:"₹490",img:"./img/eggs_truffe.jpeg",
     desc:"Soft scrambled eggs infused with truffle cream, finished with roasted mushrooms over country toast.",
     taste:["Earthy","Creamy","Luxurious","Umami"],
     health:["High Protein","Good Source Of Choline"],
@@ -83,7 +84,7 @@ const ITEMS = [
     ingredients:["Free-Range Eggs","Truffle Cream","Roasted Mushrooms","Country Toast"],
     freshness:"Eggs cracked and scrambled to order.",
     chefTip:"Ask for the truffle shavings on the side if you'd like it a touch lighter.", rating:4.9 }),
-  D({id:"e2",cat:"eggs",name:"Egg & Soldiers",price:"₹360",img:"./img/egg_&_soldiers.jpg",
+  D({id:"e2",cat:"eggs",name:"Egg & Soldiers",price:"₹360",img:"./img/egg_&_soldiers.jpeg",
     desc:"Baked eggs in cream, Parmesan and Swiss cheese, served with buttered multigrain baguette soldiers for dipping.",
     taste:["Creamy","Cheesy","Savory"],
     health:["Calcium Rich","High Protein"],
@@ -92,7 +93,7 @@ const ITEMS = [
     ingredients:["Eggs","Cream","Parmesan","Swiss Cheese","Multigrain Baguette"],
     freshness:"Baked to order in individual ramekins.",
     chefTip:"Dip the soldiers before the yolk fully sets for the fullest flavour.", rating:4.6 }),
-  D({id:"e3",cat:"eggs",name:"Classic French Omelette",price:"₹400",img:"./img/classic_omelet.jpg",
+  D({id:"e3",cat:"eggs",name:"Classic French Omelette",price:"₹400",img:"./img/classic_omelet.jpeg",
     desc:"A classic French omelette on crispy potato rösti, with crème fraîche and balsamic-roasted cherry tomatoes.",
     taste:["Silky","Savory","Tangy"],
     health:["High Protein","Good Source Of Vitamin C"],
@@ -101,7 +102,7 @@ const ITEMS = [
     ingredients:["Eggs","Potato Rösti","Crème Fraîche","Cherry Tomatoes"],
     freshness:"Rolled to order and served immediately.",
     chefTip:"The rösti underneath should crackle — if it doesn't, send it back to us.", rating:4.6 }),
-  D({id:"e4",cat:"eggs",name:"Masala Tofu Scramble",price:"₹380",img:"./img/masala_tofu_scramble.jpg",
+  D({id:"e4",cat:"eggs",name:"Masala Tofu Scramble",price:"₹380",
     desc:"Masala-spiced tofu tossed and served on crispy potato rösti with cashew cheese and balsamic cherry tomatoes.",
     taste:["Spiced","Savory","Earthy"],
     health:["Plant-Based Protein","Vegan Friendly","Iron Rich"],
@@ -112,7 +113,7 @@ const ITEMS = [
     chefTip:"Our wholly plant-based reading of the classic French omelette.", rating:4.5 }),
 
   // ---------------- BRUNCH PLATES ----------------
-  D({id:"b1",cat:"brunch",name:"Croissant Florentine",price:"₹390",img:"./img/croissant_florentine.jpg",
+  D({id:"b1",cat:"brunch",name:"Croissant Florentine",price:"₹390",img:"./img/croissant_florentine.jpeg",
     desc:"A buttery croissant layered with creamy spinach, perfectly poached eggs and rich Mornay sauce.",
     taste:["Rich","Creamy","Buttery","Savory"],
     health:["High Protein","Good Calcium Source","Provides Healthy Energy","Contains Iron From Spinach"],
@@ -121,7 +122,7 @@ const ITEMS = [
     ingredients:["Croissant","Spinach","Poached Egg","Mornay Sauce"],
     freshness:"Assembled to order; eggs poached fresh.",
     chefTip:"Cut in at the centre first — the yolk should run straight into the Mornay sauce.", rating:4.8 }),
-  D({id:"b2",cat:"brunch",name:"Brunch Waffle",price:"₹420",img:"./img/brunch_waffle.jpg",
+  D({id:"b2",cat:"brunch",name:"Brunch Waffle",price:"₹420",img:"./img/brunch_waffle.jpeg",
     desc:"A crisp Belgian waffle topped with a poached egg, sautéed mushroom and spinach in a light Mornay sauce.",
     taste:["Crisp","Savory","Creamy"],
     health:["High Protein","Iron Rich"],
@@ -130,7 +131,7 @@ const ITEMS = [
     ingredients:["Waffle Batter","Egg","Mushroom","Spinach","Mornay Sauce"],
     freshness:"Waffle pressed fresh per order.",
     chefTip:"For the guest who can't choose between a savoury plate and a sweet one.", rating:4.6 }),
-  D({id:"b3",cat:"brunch",name:"Croque Madame",price:"₹540",img:"./img/croque_madame.jpg",
+  D({id:"b3",cat:"brunch",name:"Croque Madame",price:"₹540",img:"./img/croque_madame.jpeg",
     desc:"Gratinated country bread, toasted with bacon, cheese and béchamel, topped with a fried egg, fries, ketchup and house mayo.",
     taste:["Cheesy","Smoky","Indulgent","Savory"],
     health:["High Protein","Calcium Rich"],
@@ -141,7 +142,7 @@ const ITEMS = [
     chefTip:"Our all-time favourite — order it exactly as it comes, no substitutions needed.", rating:4.9 }),
 
   // ---------------- PAIN PERDU ----------------
-  D({id:"p1",cat:"painperdu",name:"Pain Perdu Classic",price:"₹300",img:"./img/pain_perdu_classic.jpg",
+  D({id:"p1",cat:"painperdu",name:"Pain Perdu Classic",price:"₹300",img:"./img/pain_perdu_classic.jpeg",
     desc:"Our signature French toast — thick-cut brioche soaked in vanilla custard and pan-seared until caramelised.",
     taste:["Sweet","Custardy","Caramelised"],
     health:["Source Of Energy","Contains Calcium"],
@@ -150,7 +151,7 @@ const ITEMS = [
     ingredients:["Brioche","Vanilla Custard","Butter","Maple Syrup"],
     freshness:"Soaked and seared to order.",
     chefTip:"Let it rest 30 seconds after searing so the custard sets through.", rating:4.6 }),
-  D({id:"p2",cat:"painperdu",name:"Pain Perdu Crème Brûlée & Orange",price:"₹360",img:"./img/pain_perdu_orange.jpg",
+  D({id:"p2",cat:"painperdu",name:"Pain Perdu Crème Brûlée & Orange",price:"₹360",img:"./img/pain_perdu_orange.jpeg",
     desc:"Our signature French toast finished with a brûléed sugar crust and candied orange zest.",
     taste:["Caramelised","Citrusy","Sweet"],
     health:["Vitamin C From Orange","Source Of Energy"],
@@ -159,7 +160,7 @@ const ITEMS = [
     ingredients:["Brioche","Custard","Brûléed Sugar","Candied Orange"],
     freshness:"Torched to order for a crackling crust.",
     chefTip:"Tap the sugar crust with your spoon first — it should shatter, not bend.", rating:4.8 }),
-  D({id:"p3",cat:"painperdu",name:"Pain Perdu Tiramisu",price:"₹390",img:"./img/tiramisu_pain_perdu.jpg",
+  D({id:"p3",cat:"painperdu",name:"Pain Perdu Tiramisu",price:"₹390",img:"./img/tiramisu_pain_perdu.jpeg",
     desc:"Our signature French toast layered with espresso-soaked mascarpone and a dusting of cocoa.",
     taste:["Coffee","Creamy","Sweet"],
     health:["Source Of Energy","Contains Calcium"],
@@ -199,7 +200,7 @@ const ITEMS = [
     chefTip:"Our newest bowl — the dragon fruit gives it a colour as striking as its taste.", rating:4.7 }),
 
   // ---------------- TEA CAKES ----------------
-  D({id:"t1",cat:"teacakes",name:"Chocolate Ganache Cake",price:"₹420",img:"./img/chocolate_ganache_cake.jpg",
+  D({id:"t1",cat:"teacakes",name:"Chocolate Cake",price:"₹420",img:"./img/chocolate_ganache_cake.jpeg",
     desc:"A dense chocolate ganache cake layered with a peanut praline crunch.",
     taste:["Rich","Chocolatey","Nutty"],
     health:["Antioxidants From Cocoa"],
@@ -208,7 +209,7 @@ const ITEMS = [
     ingredients:["Dark Chocolate","Ganache","Peanut Praline"],
     freshness:"Baked in-house every alternate day.",
     chefTip:"Let it come to room temperature so the ganache softens fully.", rating:4.7 }),
-  D({id:"t2",cat:"teacakes",name:"Quatre-Quart",price:"₹290",img:"./img/quatre_quart.jpg",
+  D({id:"t2",cat:"teacakes",name:"Quatre-Quart",price:"₹290",img:"./img/quatre_quart.jpeg",
     desc:"A traditional French pound cake — equal parts butter, sugar, flour and egg — served with whipped cream and fresh fruit.",
     taste:["Buttery","Light","Classic"],
     health:["Source Of Energy"],
@@ -389,7 +390,7 @@ const ITEMS = [
     ingredients:["Mixed Mushrooms","Butter","Baguette","Truffle Oil"],
     freshness:"Set fresh each morning.",
     chefTip:"Our vegetarian answer to the classic pâté board.", rating:4.6 }),
-  D({id:"sh4",cat:"share",name:"Chicken Nuggets",price:"₹410",img:"./img/chicken_nuggets.jpg",
+  D({id:"sh4",cat:"share",name:"Chicken Nuggets",price:"₹410",img:"./img/chicken_nuggets.jpeg",
     desc:"House-made chicken nuggets, fried until golden, served with fries and dips.",
     taste:["Crispy","Savory","Comforting"],
     health:["High Protein"],
@@ -409,7 +410,7 @@ const ITEMS = [
     ingredients:["Sourdough","Mixed Mushrooms","Parmesan","Pomegranate Molasses"],
     freshness:"Mushrooms roasted fresh to order.",
     chefTip:"Our guests' favourite tartine — the pomegranate molasses is the reason why.", rating:4.8 }),
-  D({id:"ta2",cat:"tartines",name:"Caprese Tartine",price:"₹480",img:"./img/caprese_tartine.jpg",
+  D({id:"ta2",cat:"tartines",name:"Caprese Tartine",price:"₹480",img:"./img/caprese_tartine.jpeg",
     desc:"Stracciatella, basil pesto, cherry tomatoes and a balsamic drizzle on baked sourdough.",
     taste:["Creamy","Herby","Fresh"],
     health:["Calcium Rich","Vitamin C"],
@@ -427,18 +428,18 @@ const ITEMS = [
     ingredients:["Sourdough","Tomato Pesto","Bell Pepper","Zucchini","Capers","Mozzarella"],
     freshness:"Vegetables roasted fresh daily.",
     chefTip:"Ask for extra capers if you like your tartines with a briny finish.", rating:4.6 }),
-  D({id:"ta4",cat:"tartines",name:"Potimaron Tartine",price:"₹460",img:"./img/potimaron_tartine.jpg",
-    desc:"Pumpkin purée, roasted pumpkin, Parmesan, dukkah and microgreens on baked sourdough.",
-    taste:["Sweet","Nutty","Earthy"],
-    health:["Vitamin A","High Fiber"],
-    nutrition:{cal:360,protein:10,carbs:40,fat:16}, diet:"veg", spice:0,
-    pairing:"Chai Latte", prep:"8 mins", badges:["seasonal"],
-    ingredients:["Sourdough","Pumpkin Purée","Roasted Pumpkin","Dukkah","Microgreens"],
-    freshness:"Pumpkin roasted fresh each week.",
-    chefTip:"Named for the French potimarron squash — best while the pumpkin is still warm.", rating:4.6 }),
+  // D({id:"ta4",cat:"tartines",name:"Potimaron Tartine",price:"₹460",img:"./img/potimaron_tartine.jpg",
+  //   desc:"Pumpkin purée, roasted pumpkin, Parmesan, dukkah and microgreens on baked sourdough.",
+  //   taste:["Sweet","Nutty","Earthy"],
+  //   health:["Vitamin A","High Fiber"],
+  //   nutrition:{cal:360,protein:10,carbs:40,fat:16}, diet:"veg", spice:0,
+  //   pairing:"Chai Latte", prep:"8 mins", badges:["seasonal"],
+  //   ingredients:["Sourdough","Pumpkin Purée","Roasted Pumpkin","Dukkah","Microgreens"],
+  //   freshness:"Pumpkin roasted fresh each week.",
+  //   chefTip:"Named for the French potimarron squash — best while the pumpkin is still warm.", rating:4.6 }),
 
   // ---------------- SALADS ----------------
-  D({id:"sa1",cat:"salads",name:"Baby Burrata Salad",price:"₹440",img:"./img/baby_burrata.jpg",
+  D({id:"sa1",cat:"salads",name:"Baby Burrata Salad",price:"₹440",img:"./img/baby_burrata.jpeg",
     desc:"Burrata served on seasonal fruits, mixed lettuces and arugula, with balsamic vinaigrette, nuts and seeds.",
     taste:["Creamy","Fresh","Sweet"],
     health:["Calcium Rich","High Fiber"],
@@ -447,7 +448,7 @@ const ITEMS = [
     ingredients:["Burrata","Seasonal Fruit","Mixed Lettuce","Arugula","Nuts","Seeds"],
     freshness:"Burrata delivered fresh twice weekly.",
     chefTip:"Let the burrata sit at room temperature for five minutes before eating.", rating:4.8 }),
-  D({id:"sa2",cat:"salads",name:"Caesar Salad (Veg)",price:"₹390",img:"./img/caesar_salad_veg.jpg",
+  D({id:"sa2",cat:"salads",name:"Caesar Salad (Veg)",price:"₹390",img:"./img/caesar_salad_veg.jpeg",
     desc:"Iceberg lettuce, Caesar dressing, croutons and Parmesan — the classic, without the chicken.",
     taste:["Creamy","Crunchy","Savory"],
     health:["Calcium Rich"],
@@ -456,7 +457,7 @@ const ITEMS = [
     ingredients:["Iceberg Lettuce","Caesar Dressing","Croutons","Parmesan"],
     freshness:"Dressed fresh to order.",
     chefTip:"Ask for the dressing on the side if you prefer it lighter.", rating:4.5 }),
-  D({id:"sa3",cat:"salads",name:"Caesar Salad (Chicken)",price:"₹490",img:"./img/caesar_salad_chicken.jpg",
+  D({id:"sa3",cat:"salads",name:"Caesar Salad (Chicken)",price:"₹490",img:"./img/caesar_salad_chicken.jpeg",
     desc:"Fried and juicy chicken thighs, iceberg lettuce, Caesar dressing, croutons and Parmesan.",
     taste:["Crispy","Creamy","Savory"],
     health:["High Protein","Calcium Rich"],
@@ -465,15 +466,15 @@ const ITEMS = [
     ingredients:["Chicken Thigh","Iceberg Lettuce","Caesar Dressing","Croutons","Parmesan"],
     freshness:"Chicken fried fresh to order.",
     chefTip:"The chicken thigh stays juicier than breast — that's why we choose it here.", rating:4.7 }),
-  D({id:"sa4",cat:"salads",name:"Parisian Salad",price:"₹430",img:"./img/parisian_salad.jpg",
-    desc:"Potato, green beans and greens with cheddar, herbs and a soft egg, tossed in a French dressing.",
-    taste:["Hearty","Tangy","Fresh"],
-    health:["High Fiber","High Protein"],
-    nutrition:{cal:400,protein:14,carbs:32,fat:22}, diet:"veg", spice:0,
-    pairing:"House White Wine", prep:"7 mins", badges:[],
-    ingredients:["Potato","Green Beans","Cheddar","Soft Egg","French Dressing"],
-    freshness:"Assembled fresh to order.",
-    chefTip:"A bistro salad built to be a light meal on its own, not just a side.", rating:4.6 }),
+  // D({id:"sa4",cat:"salads",name:"Parisian Salad",price:"₹430",img:"./img/parisian_salad.jpg",
+  //   desc:"Potato, green beans and greens with cheddar, herbs and a soft egg, tossed in a French dressing.",
+  //   taste:["Hearty","Tangy","Fresh"],
+  //   health:["High Fiber","High Protein"],
+  //   nutrition:{cal:400,protein:14,carbs:32,fat:22}, diet:"veg", spice:0,
+  //   pairing:"House White Wine", prep:"7 mins", badges:[],
+  //   ingredients:["Potato","Green Beans","Cheddar","Soft Egg","French Dressing"],
+  //   freshness:"Assembled fresh to order.",
+  //   chefTip:"A bistro salad built to be a light meal on its own, not just a side.", rating:4.6 }),
 
   // ---------------- COFFEE & TEA ----------------
   D({id:"coffee_1",cat:"coffee",name:"Espresso",price:"₹150",img:"./img/espresso.jpg",
@@ -494,7 +495,7 @@ const ITEMS = [
     ingredients:["Espresso","Hot Water"],
     freshness:"Built fresh in every cup.",
     chefTip:"Order it black if you like the bean character to lead the cup.", rating:4.7 }),
-  D({id:"coffee_3",cat:"coffee",name:"Latte",price:"₹220",img:"./img/latte.jpg",
+  D({id:"coffee_3",cat:"coffee",name:"Latte",price:"₹220",
     desc:"Steamed milk with a velvety espresso base and a soft, rounded finish.",
     taste:["Creamy","Smooth","Rounded"],
     health:["Comforting","Calcium Rich"],
@@ -503,7 +504,7 @@ const ITEMS = [
     ingredients:["Espresso","Steamed Milk"],
     freshness:"Prepared fresh, never pre-made.",
     chefTip:"A classic for a reason — the milk should feel silkier than the espresso is sharp.", rating:4.8 }),
-  D({id:"coffee_4",cat:"coffee",name:"Cappuccino",price:"₹250",img:"./img/capuccino.jpg",
+  D({id:"coffee_4",cat:"coffee",name:"Cappuccino",price:"₹250",
     desc:"Bold espresso crowned with steamed milk and a soft cloud of airy foam.",
     taste:["Creamy","Foamy","Balanced"],
     health:["Comforting","Calcium Rich"],
@@ -530,7 +531,7 @@ const ITEMS = [
     ingredients:["Espresso","Steamed Milk"],
     freshness:"Balanced fresh every time.",
     chefTip:"A great cup for people who want espresso character without the full milkiness of a latte.", rating:4.6 }),
-  D({id:"coffee_7",cat:"coffee",name:"Viennois",price:"₹220",img:"./img/viennois.jpg",
+  D({id:"coffee_7",cat:"coffee",name:"Viennois",price:"₹220",
     desc:"Rich double espresso topped with a velvety layer of whipped cream.",
     taste:["Creamy","Rich","Sweet"],
     health:["Comforting Treat"],
@@ -539,7 +540,7 @@ const ITEMS = [
     ingredients:["Espresso","Whipped Cream"],
     freshness:"Prepared fresh, topped at the last moment.",
     chefTip:"One of the easiest coffees to love — full-bodied and a little indulgent.", rating:4.5 }),
-  D({id:"coffee_8",cat:"coffee",name:"Mocha",price:"₹250",img:"./img/mocha.jpg",
+  D({id:"coffee_8",cat:"coffee",name:"Mocha",price:"₹250",
     desc:"Smooth espresso blended with chocolate and steamed milk.",
     taste:["Chocolatey","Creamy","Rich"],
     health:["Comforting Energy"],
@@ -566,7 +567,7 @@ const ITEMS = [
     ingredients:["Cold Coffee","Irish Flavour","Cream"],
     freshness:"Served fresh from the blender.",
     chefTip:"Not too sweet, just supportive of the coffee's richness.", rating:4.7 }),
-  D({id:"coffee_11",cat:"coffee",name:"Affogato",price:"₹220",img:"./img/espresso.jpg",
+  D({id:"coffee_11",cat:"coffee",name:"Affogato",price:"₹220",
     desc:"A shot of hot espresso poured over vanilla ice cream.",
     taste:["Creamy","Chocolatey","Intense"],
     health:["Indulgent Dessert"],
@@ -575,7 +576,7 @@ const ITEMS = [
     ingredients:["Espresso","Vanilla Ice Cream"],
     freshness:"Built fresh to order.",
     chefTip:"Serve with a spoon and a pause — the espresso should melt the ice cream slightly.", rating:4.9 }),
-  D({id:"coffee_12",cat:"coffee",name:"Tiramisu Ice Latte",price:"₹320",img:"./img/tiramisu_ice_latte.jpg",
+  D({id:"coffee_12",cat:"coffee",name:"Tiramisu Ice Latte",price:"₹320",
     desc:"Iced espresso layered with cream, cocoa and a tiramisu-inspired finish.",
     taste:["Creamy","Coffee","Sweet"],
     health:["Dessert Coffee"],
@@ -685,7 +686,7 @@ const ITEMS = [
     ingredients:["Watermelon","Chia Seeds","Mint"],
     freshness:"Blended fresh daily.",
     chefTip:"The mint should come through first, then the clean watermelon finish.", rating:4.6 }),
-  D({id:"dr3",cat:"juice",name:"Apple Beetroot Carrot",price:"₹220",img:"./img/apple_beetroot_carrot.jpg",
+  D({id:"dr3",cat:"juice",name:"Apple Beetroot Carrot",price:"₹220",img:"./img/apple_beetroot_carrot.png",
     desc:"A vivid mix of apple, beetroot and carrot for a crisp, earthy boost.",
     taste:["Earthy","Sweet","Fresh"],
     health:["Antioxidant Rich","Vitamin C"],
@@ -703,24 +704,105 @@ const ITEMS = [
     ingredients:["Banana","Berries","Milk"],
     freshness:"Blended fresh to order.",
     chefTip:"Order it with a little ice if you want the texture lighter and brighter.", rating:4.7 }),
+  D({id:"dr_papaya",cat:"juice",name:"Papaya Melon",price:"₹250", img:"./img/papaya_melon.jpg",
+    desc:"Fresh papaya and sweet melon blended into a silky, cooling tropical smoothie.",
+    taste:["Tropical","Silky","Sweet"],
+    health:["Digestive Enzymes","Vitamin C & A","Hydrating"],
+    nutrition:{cal:210,protein:4,carbs:36,fat:2}, diet:"veg", spice:0,
+    pairing:"Healthy bowls & morning pastries", prep:"4 mins", badges:["healthy"],
+    ingredients:["Ripe Papaya","Sweet Melon","Almond Milk","Chia Seeds"],
+    freshness:"Blended fresh to order from chilled fruit.",
+    chefTip:"Papaya and melon provide soothing natural sweetness without any added sugar.", rating:4.7 }),
   D({id:"dr5",cat:"juice",name:"Chocolate Smoothie",price:"₹280",img:"./img/chocolate_smoothie.jpg",
-    desc:"Banana, almond milk and cocoa blended into a rich, velvety chocolate smoothie.",
+    desc:"Banana, almonds, date syrup, cocoa, and milk blended into a rich, velvety chocolate smoothie.",
     taste:["Rich","Creamy","Chocolatey"],
     health:["Good Source Of Energy","Cocoa Antioxidants"],
     nutrition:{cal:290,protein:7,carbs:42,fat:8}, diet:"veg", spice:0,
     pairing:"Dessert sip", prep:"4 mins", badges:["bestseller"],
-    ingredients:["Banana","Cocoa","Almond Milk"],
+    ingredients:["Banana","Almonds","Date Syrup","Cocoa","Milk"],
     freshness:"Blended fresh to order.",
     chefTip:"The cocoa is understated, the banana keeps it round and smooth.", rating:4.8 }),
-  D({id:"dr6",cat:"hotdrinks",name:"Chocolate Chaud",price:"₹290",img:"./img/chocolat_chaud.jpg",
-    desc:"Classic hot chocolate. Rich, velvety melted chocolate blended into warm, creamy milk and topped with vanilla whipped cream.",
-    taste:["Rich","Velvety","Warm"],
-    health:["Comfort Sip","Energy Lift"],
+  D({id:"mock1",cat:"mocktails",name:"Citrus Basil Sparkle",price:"₹240",img:"./img/citrus_basil_sparkle.jpg",
+    desc:"Bright citrus flavours balanced with fresh basil and a gentle sparkle and refreshing, zesty cooler with a clean herbal finish.",
+    taste:["Citrusy","Herbal","Sparkling","Zesty"],
+    health:["Rich in Vitamin C","Hydrating","Antioxidants"],
+    nutrition:{cal:110,protein:1,carbs:26,fat:0}, diet:"veg", spice:0,
+    pairing:"Light salads & savory tartines", prep:"3 mins", badges:["bestseller"],
+    ingredients:["Fresh Basil","Citrus Juice","Sparkling Soda","Lime Wheel","Cane Sugar"],
+    freshness:"Crafted fresh to order with hand-picked basil.",
+    chefTip:"Gently stir before sipping so the aromatic basil oil mingles with the citrus sparkle.", rating:4.8 }),
+  D({id:"mock2",cat:"mocktails",name:"Berry Mint Cooler",price:"₹260",img:"./img/berry_mint_cooler.jpg",
+    desc:"A juicy blend of berry flavours with refreshing mint. Sweet, vibrant and cooling with a crisp fruity finish.",
+    taste:["Fruity","Minty","Sweet","Cooling"],
+    health:["Berry Antioxidants","Hydrating","Immunity Boost"],
+    nutrition:{cal:130,protein:1,carbs:31,fat:0}, diet:"veg", spice:0,
+    pairing:"Pairs wonderfully with brunch plates", prep:"4 mins", badges:["favourite"],
+    ingredients:["Mixed Berries","Fresh Mint","Lemon Juice","Chilled Soda"],
+    freshness:"Crushed berries and mint muddled fresh per order.",
+    chefTip:"The mint is lightly clapped to release its delicate cooling oils without any bitterness.", rating:4.8 }),
+  D({id:"mock3",cat:"mocktails",name:"Cucumber Elderflower Fizz",price:"₹260",img:"./img/cucumber_elderflower_fizz.jpg",
+    desc:"Fresh cucumber meets delicate elderflower with a touch of light fizz, floral and wonderfully refreshing.",
+    taste:["Floral","Crisp","Subtle","Sparkling"],
+    health:["Super Hydrating","Low Calorie","Detoxifying"],
+    nutrition:{cal:95,protein:1,carbs:22,fat:0}, diet:"veg", spice:0,
+    pairing:"Ideal with French fries or crêpes", prep:"3 mins", badges:["chef"],
+    ingredients:["Fresh Cucumber Ribbons","Elderflower Extract","Sparkling Water","Lemon"],
+    freshness:"Thin cucumber ribbons sliced fresh for every glass.",
+    chefTip:"An elegant, floral spritz that cleanses the palate between bites.", rating:4.9 }),
+  D({id:"mock4",cat:"mocktails",name:"Mango Passion Refresher",price:"₹340",img:"./img/mango_passion_refresher.jpg",
+    desc:"Tropical mango and passion fruit come together in a vibrant blend. Juicy, tangy and refreshing with a bright tropical finish.",
+    taste:["Tropical","Tangy","Sweet","Vibrant"],
+    health:["High Vitamin A & C","Rich in Antioxidants"],
+    nutrition:{cal:160,protein:1,carbs:38,fat:0}, diet:"veg", spice:0,
+    pairing:"Delicious alongside savory crêpes & tartines", prep:"4 mins", badges:["bestseller"],
+    ingredients:["Ripe Mango","Passion Fruit Pulp","Citrus","Crushed Ice"],
+    freshness:"Real tropical fruit purees blended fresh.",
+    chefTip:"The natural acidity of passion fruit perfectly offsets the lush sweetness of ripe mango.", rating:4.9 }),
+  D({id:"mock5",cat:"mocktails",name:"Lychee Rose Lemonade",price:"₹340",img:"./img/lychee_rose_lemonade.png",
+    desc:"Sweet lychee and fragrant rose blend beautifully with zesty lemonade. Floral, refreshing and delicately sweet.",
+    taste:["Floral","Sweet","Zesty","Aromatic"],
+    health:["Hydrating","Vitamin C Boost"],
+    nutrition:{cal:145,protein:1,carbs:35,fat:0}, diet:"veg", spice:0,
+    pairing:"A charming match for tea cakes and pain perdu", prep:"3 mins", badges:["new"],
+    ingredients:["Lychee Juice","Rose Infusion","Fresh Lemon","Chilled Soda"],
+    freshness:"Handcrafted with delicate French rose water and luscious lychee.",
+    chefTip:"Take a moment to enjoy the fragrant floral bouquet before taking your first sip.", rating:4.8 }),
+  D({id:"mock6",cat:"mocktails",name:"Pineapple Ginger Smash",price:"₹260",img:"./img/pineapple_ginger_smash.png",
+    desc:"Tropical pineapple meets the warm kick of fresh ginger. Juicy, spicy and refreshing with a bold fruity finish.",
+    taste:["Tropical","Zingy","Juicy","Warm Spice"],
+    health:["Digestive Aid","Anti-inflammatory Ginger","Rich in Enzymes"],
+    nutrition:{cal:135,protein:1,carbs:32,fat:0}, diet:"veg", spice:1,
+    pairing:"Pairs great with sandwiches & savory crêpes", prep:"4 mins", badges:["healthy"],
+    ingredients:["Fresh Pineapple Juice","Crushed Ginger Root","Lime","Sparkling Water"],
+    freshness:"Freshly smashed ginger root pressed with cold pineapple juice.",
+    chefTip:"The fiery ginger spice gives an invigorating warmth that balances the sweet pineapple.", rating:4.7 }),
+  D({id:"mock7",cat:"mocktails",name:"Espresso Mojito",price:"₹320",img:"./img/espresso_mojito.jpg",
+    desc:"A refreshing twist on the classic mojito with rich espresso and bright citrus. Cool, lively and aromatic with a smooth coffee finish.",
+    taste:["Coffee","Minty","Citrusy","Bold"],
+    health:["Clean Energy Lift","Antioxidants"],
+    nutrition:{cal:85,protein:1,carbs:18,fat:0}, diet:"veg", spice:0,
+    pairing:"Perfect afternoon pick-me-up or brunch companion", prep:"4 mins", badges:["chef"],
+    ingredients:["Fresh Espresso Shot","Muddled Mint","Lime Juice","Sparkling Soda","Cane Sugar"],
+    freshness:"Freshly pulled hot espresso poured over iced mint and citrus spritz.",
+    chefTip:"Layered coffee and sparkling citrus — drink it layered or stir gently for an effervescent coffee buzz.", rating:4.9 }),
+  D({id:"mock8",cat:"mocktails",name:"Pineapple Ember",price:"₹320",img:"./img/pineapple_ember.jpg",
+    desc:"Bold pineapple and rich espresso come together with a warming spiced character. Tropical, smooth and intriguing with a deep coffee finish.",
+    taste:["Tropical","Smoky Coffee","Spiced","Smooth"],
+    health:["Natural Energy","Metabolism Boost"],
+    nutrition:{cal:110,protein:1,carbs:24,fat:0}, diet:"veg", spice:1,
+    pairing:"Superb with chocolate pastries or afternoon share plates", prep:"4 mins", badges:["new"],
+    ingredients:["Pineapple Juice","Espresso Shot","Warm Spiced Syrup","Citrus Peel","Ice"],
+    freshness:"Spiced infusion shaken with cold pineapple and topped with rich crema espresso.",
+    chefTip:"A signature artisanal creation where tropical sweetness meets roasted espresso depth.", rating:4.8 }),
+  D({id:"dr6",cat:"hotdrinks",name:"Chocolat Chaud",price:"₹290",img:"./img/chocolat_chaud.jpg",
+    desc:"Classic Hot Chocolate. Rich, velvety melted chocolate blended into warm, creamy milk & topped with Vanilla Whipped Cream.",
+    taste:["Rich","Velvety","Warm","Chocolatey"],
+    health:["Comfort Sip","Energy Lift","Antioxidants"],
     nutrition:{cal:330,protein:8,carbs:36,fat:16}, diet:"veg", spice:0,
-    pairing:"Best with a croissant", prep:"5 mins", badges:["bestseller"],
-    ingredients:["Dark Chocolate","Milk","Cream","Vanilla"],
+    pairing:"Best with a croissant or pain au chocolat", prep:"5 mins", badges:["bestseller"],
+    ingredients:["Dark Chocolate","Creamy Milk","Vanilla Whipped Cream"],
     freshness:"Prepared warm to order.",
-    chefTip:"The perfect winter comfort, or any time you need a slower moment.", rating:4.9 }),
+    chefTip:"Our signature crowd favourite — rich, thick, and luxurious hot chocolate.", rating:4.9 }),
   D({id:"dr7",cat:"soda",name:"Ginger Lemon Mint Fizz",price:"₹190",img:"./img/ginger_lemon_mint_fizz.jpg",
     desc:"Fresh ginger, crushed lime and mint in soda water.",
     taste:["Citrusy","Gingery","Bubbly"],
@@ -869,15 +951,16 @@ function badgesHTML(badges){
 
 function cardHTML(item){
   const imageUrl = imgUrl(item.img);
-  return `
-  <article class="dish-card" data-id="${item.id}" data-cat="${item.cat}" tabindex="0" role="button" aria-label="View details for ${item.name}">
+  const mediaHTML = imageUrl ? `
     <div class="dish-media">
       <a class="dish-image-link" href="${imageUrl}" target="_blank" rel="noopener noreferrer" aria-label="Open full-size image of ${item.name}">
         <img src="${imageUrl}" alt="${item.name}" loading="lazy">
       </a>
-      <div class="dish-ribbon">${badgesHTML(item.badges)}</div>
-      <div class="dish-diet-flag ${item.diet === "veg" ? "veg" : "nonveg"}" title="${item.diet === "veg" ? "Vegetarian" : "Non-Vegetarian"}"></div>
-    </div>
+    </div>` : ``;
+
+  return `
+  <article class="dish-card" data-id="${item.id}" data-cat="${item.cat}" tabindex="0" role="button" aria-label="View details for ${item.name}">
+    ${mediaHTML}
     <div class="dish-body">
       <div class="dish-head">
         <span class="dish-name">${item.name}</span>
@@ -887,7 +970,6 @@ function cardHTML(item){
       <div class="taste-tags">${item.taste.slice(0,4).map(t=>`<span class="taste-tag">${t}</span>`).join("")}</div>
       <div class="dish-foot">
         <div class="dish-meta">
-          <span class="dish-meta-item">⏱ ${item.prep}</span>
           ${spiceDots(item.spice)}
         </div>
         <div class="dish-cta">
@@ -1008,12 +1090,14 @@ function renderCart(){
               ${priceOptions.map(price => `<option value="${price}" ${price === selectedPrice ? "selected" : ""}>${formatCurrency(price)}</option>`).join("")}
             </select>`
           : `<p>${item.price}</p>`;
+        const imageUrl = imgUrl(item.img);
+        const imageHTML = imageUrl ? `<img class="cart-item-image" src="${imageUrl}" alt="${item.name}">` : ``;
 
         return `
       <div class="cart-item">
         <div class="cart-item-main">
           <div class="cart-item-details">
-            <img class="cart-item-image" src="${item.img}" alt="${item.name}">
+            ${imageHTML}
             <div>
               <h4>${item.name}</h4>
               ${priceControl}
@@ -1134,12 +1218,16 @@ function modalHTML(item){
     return `<div class="taste-meter"><span class="taste-meter-label">${t}</span><div class="taste-meter-track"><div class="taste-meter-fill" data-pct="${pct}"></div></div></div>`;
   }).join("");
 
+  const imageUrl = imgUrl(item.img);
+  const mediaHTML = imageUrl ? `
+  <div class="modal-media">
+    <img src="${imageUrl}" alt="${item.name}">
+    <div class="modal-media-caption">${item.name}</div>
+  </div>` : ``;
+
   return `
   <button class="modal-close" id="modalCloseBtn" aria-label="Close">✕</button>
-  <div class="modal-media">
-    <img src="${imgUrl(item.img)}" alt="${item.name}">
-    <div class="modal-media-caption">${item.name}</div>
-  </div>
+  ${mediaHTML}
   <div class="modal-body">
     <div class="modal-topline">
       <div class="modal-badges">${badgesHTML(item.badges)}</div>
@@ -1177,7 +1265,6 @@ function modalHTML(item){
       <div class="modal-footer-item"><h5>Suitable For</h5><p>${item.diet === "veg" ? "Vegetarian" : "Non-Vegetarian"}</p></div>
       <div class="modal-footer-item"><h5>Spice Level</h5><p>${["None","Mild","Medium","Hot"][item.spice]}</p></div>
       <div class="modal-footer-item"><h5>Recommended Pairing</h5><p>${item.pairing}</p></div>
-      <div class="modal-footer-item"><h5>Preparation Time</h5><p>${item.prep}</p></div>
       <div class="modal-footer-item"><h5>Freshness</h5><p>${item.freshness}</p></div>
     </div>
 
