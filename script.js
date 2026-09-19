@@ -229,7 +229,7 @@ const ITEMS = [
     chefTip:"Ask for it warmed — the ice cream should just begin to melt at the edges.", rating:4.6 }),
 
   // ---------------- CRÊPE & WAFFLE ----------------
-  D({id:"c1",cat:"crepewaffle",name:"Façon Tatin",price:"₹340 / ₹390",img:"./img/facon_tatin.jpg",
+  D({id:"c1",cat:"crepewaffle",name:"Façon Tatin",price:"₹340 / ₹390",img:"./img/facon_tatin.png",
     desc:"Apple compote, whipped mascarpone and Biscoff crumble folded into a delicate crêpe or a crisp waffle.",
     taste:["Caramelised","Fruity","Creamy"],
     health:["Vitamin C From Apple"],
@@ -657,7 +657,7 @@ const ITEMS = [
     ingredients:["Green Tea Leaves","Water"],
     freshness:"Steeped fresh to keep the aroma alive.",
     chefTip:"The tea should feel calm and creamy in the mouth, never metallic.", rating:4.6 }),
-  D({id:"tea_8",cat:"tea",name:"Rooibos",price:"₹180",img:"./img/rooibos.jpg",
+  D({id:"tea_8",cat:"tea",name:"Rooibos",price:"₹180",img:"./img/rooibos.png",
     desc:"A naturally sweet, caffeine-free infusion with warm floral notes.",
     taste:["Sweet","Floral","Warm"],
     health:["Naturally Caffeine-Free","Comforting"],
@@ -704,7 +704,7 @@ const ITEMS = [
     ingredients:["Apple","Beetroot","Carrot"],
     freshness:"Blended fresh to order.",
     chefTip:"A little earthy, a little sweet — exactly how it should be.", rating:4.7 }),
-  D({id:"dr4",cat:"juice",name:"Banana Berry Smoothie",price:"₹250",img:"./img/banana_berry_smoothie.jpeg",
+  D({id:"dr4",cat:"juice",name:"Banana Berry Smoothie",price:"₹250",img:"./img/banana_berry_smoothie.png",
     desc:"Banana, berries and creamy milk blended into a soft, fruity smoothie.",
     taste:["Creamy","Fruity","Smooth"],
     health:["Energy Boosting","Antioxidants"],
